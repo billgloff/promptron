@@ -173,7 +173,7 @@
     .logo-pill:hover { background:rgba(79,110,247,0.1); border-color:rgba(79,110,247,0.3); color:white; }
 
     /* Floating badges */
-    .float-badge { position:absolute; font-family:'JetBrains Mono',monospace; font-size:11px; padding:5px 10px; border-radius:6px; white-space:nowrap; pointer-events:none; animation:float-bob ease-in-out infinite; }
+    .float-badge { position:absolute; font-family:'JetBrains Mono',monospace; font-size:11px; padding:5px 10px; border-radius:6px; white-space:nowrap; pointer-events:none; animation:float-bob ease-in-out infinite; z-index:10; }
     @keyframes float-bob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
     .badge-green  { background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3); color:#4ade80; }
     .badge-yellow { background:rgba(251,191,36,0.1);  border:1px solid rgba(251,191,36,0.3);  color:#fbbf24; }
