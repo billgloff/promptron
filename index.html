@@ -154,6 +154,31 @@
 
     .gradient-text { background:linear-gradient(135deg,#ffffff 0%,#a5b4fc 50%,#818cf8 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
+    /* Scroll progress */
+    #scroll-progress { position:fixed; top:0; left:0; height:2px; z-index:100; background:linear-gradient(90deg,#4f6ef7,#7c3aed,#06b6d4); width:0%; box-shadow:0 0 8px rgba(79,110,247,0.8); pointer-events:none; }
+
+    /* Cursor spotlight */
+    #cursor-spotlight { position:fixed; pointer-events:none; z-index:1; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(79,110,247,0.07) 0%,transparent 70%); transform:translate(-50%,-50%); }
+
+    /* Light beam sweep */
+    .beam { position:absolute; top:0; left:-100%; width:60%; height:100%; background:linear-gradient(105deg,transparent 40%,rgba(79,110,247,0.06) 50%,rgba(255,255,255,0.03) 55%,transparent 65%); animation:beam-sweep 3s ease-in-out 0.5s forwards; pointer-events:none; }
+    @keyframes beam-sweep { 0%{left:-100%;opacity:0;} 10%{opacity:1;} 90%{opacity:1;} 100%{left:150%;opacity:0;} }
+
+    /* Logo strip */
+    .logo-strip { overflow:hidden; mask-image:linear-gradient(90deg,transparent,black 15%,black 85%,transparent); -webkit-mask-image:linear-gradient(90deg,transparent,black 15%,black 85%,transparent); }
+    .logo-track { display:flex; gap:32px; animation:scroll-logos 28s linear infinite; width:max-content; }
+    .logo-track:hover { animation-play-state:paused; }
+    @keyframes scroll-logos { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+    .logo-pill { display:flex; align-items:center; gap:8px; padding:8px 18px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:999px; white-space:nowrap; font-size:13px; font-weight:500; color:#9ca3af; transition:all 0.2s; }
+    .logo-pill:hover { background:rgba(79,110,247,0.1); border-color:rgba(79,110,247,0.3); color:white; }
+
+    /* Floating badges */
+    .float-badge { position:absolute; font-family:'JetBrains Mono',monospace; font-size:11px; padding:5px 10px; border-radius:6px; white-space:nowrap; pointer-events:none; animation:float-bob ease-in-out infinite; }
+    @keyframes float-bob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+    .badge-green  { background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3); color:#4ade80; }
+    .badge-yellow { background:rgba(251,191,36,0.1);  border:1px solid rgba(251,191,36,0.3);  color:#fbbf24; }
+    .badge-blue   { background:rgba(79,110,247,0.15); border:1px solid rgba(79,110,247,0.4);  color:#818cf8; }
+
     /* Comparison table */
     .check { color: #4ade80; }
     .cross { color: #ef4444; opacity: 0.5; }
@@ -175,6 +200,8 @@
 </head>
 <body class="font-sans text-white antialiased overflow-x-hidden">
 
+  <div id="scroll-progress"></div>
+  <div id="cursor-spotlight"></div>
   <canvas id="particles" class="fixed inset-0 pointer-events-none" style="z-index:0;opacity:0.35;"></canvas>
 
   <!-- Nav -->
@@ -196,6 +223,7 @@
   <!-- Hero -->
   <main>
   <section class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-20 overflow-hidden" aria-label="Hero">
+    <div class="beam"></div>
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
@@ -233,8 +261,13 @@
       </div>
       <p class="mt-5 text-sm text-gray-600">No credit card. No spam. Just early access.</p>
 
-      <!-- Terminal -->
-      <div class="terminal rounded-xl mt-16 p-5 text-left max-w-2xl mx-auto fade-in" role="img" aria-label="Example of Promptron version history for an AI agent">
+      <!-- Terminal with floating badges -->
+      <div class="relative inline-block w-full max-w-2xl mt-16">
+        <div class="float-badge badge-green" style="top:-14px;right:10%;animation-duration:3.2s;">✓ v3.2 approved</div>
+        <div class="float-badge badge-yellow" style="top:30%;right:-2%;animation-duration:4s;animation-delay:0.5s;">⏳ Review pending</div>
+        <div class="float-badge badge-blue" style="bottom:10%;left:-2%;animation-duration:3.6s;animation-delay:1s;">↩ Rolled back</div>
+        <div class="float-badge badge-green hidden sm:block" style="bottom:-14px;left:20%;animation-duration:4.4s;animation-delay:1.5s;">🔒 Audit trail saved</div>
+      <div class="terminal rounded-xl p-5 text-left fade-in" role="img" aria-label="Example of Promptron version history for an AI agent">
         <div class="flex items-center gap-2 mb-4">
           <div class="terminal-dot bg-red-500/80"></div>
           <div class="terminal-dot bg-yellow-500/80"></div>
@@ -251,6 +284,42 @@
           <div class="pl-3 text-green-400">+ Lead with empathy, then explain policy clearly</div>
           <div class="pl-3 text-green-400">+ Escalate refund requests over $500 to human agent</div>
         </div>
+      </div>
+      </div><!-- end terminal wrapper -->
+    </div>
+  </section>
+
+  <!-- Compatible tools logo strip -->
+  <section class="px-6 py-10 border-t border-white/5" aria-label="Compatible AI tools">
+    <p class="text-center text-xs font-semibold uppercase tracking-widest text-gray-600 mb-6">Works with the AI tools your team already uses</p>
+    <div class="logo-strip">
+      <div class="logo-track">
+        <!-- First set -->
+        <div class="logo-pill">🤖 Claude (Anthropic)</div>
+        <div class="logo-pill">✨ ChatGPT (OpenAI)</div>
+        <div class="logo-pill">💎 Gemini (Google)</div>
+        <div class="logo-pill">🦙 Llama (Meta)</div>
+        <div class="logo-pill">🔮 Mistral</div>
+        <div class="logo-pill">📬 Zapier</div>
+        <div class="logo-pill">⚡ Make (Integromat)</div>
+        <div class="logo-pill">🔗 n8n</div>
+        <div class="logo-pill">🧠 LangChain</div>
+        <div class="logo-pill">🛠 Notion AI</div>
+        <div class="logo-pill">📊 HubSpot</div>
+        <div class="logo-pill">💼 Salesforce</div>
+        <!-- Duplicate for seamless loop -->
+        <div class="logo-pill">🤖 Claude (Anthropic)</div>
+        <div class="logo-pill">✨ ChatGPT (OpenAI)</div>
+        <div class="logo-pill">💎 Gemini (Google)</div>
+        <div class="logo-pill">🦙 Llama (Meta)</div>
+        <div class="logo-pill">🔮 Mistral</div>
+        <div class="logo-pill">📬 Zapier</div>
+        <div class="logo-pill">⚡ Make (Integromat)</div>
+        <div class="logo-pill">🔗 n8n</div>
+        <div class="logo-pill">🧠 LangChain</div>
+        <div class="logo-pill">🛠 Notion AI</div>
+        <div class="logo-pill">📊 HubSpot</div>
+        <div class="logo-pill">💼 Salesforce</div>
       </div>
     </div>
   </section>
@@ -586,6 +655,20 @@
   </footer>
 
   <script>
+    // ── Scroll progress bar ──
+    const progressBar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (window.scrollY / total * 100) + '%';
+    });
+
+    // ── Cursor spotlight ──
+    const spotlight = document.getElementById('cursor-spotlight');
+    document.addEventListener('mousemove', e => {
+      spotlight.style.left = e.clientX + 'px';
+      spotlight.style.top  = e.clientY + 'px';
+    });
+
     // ── Particle network ──
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
