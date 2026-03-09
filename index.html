@@ -3,23 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Promptron | AI Workflow Ops for Real Teams</title>
-  <meta name="description" content="Version control and change management for your AI agents, prompts, and workflows. Built for the teams who build with AI, not just engineers." />
+
+  <!-- Primary SEO -->
+  <title>Promptron | AI Workflow Ops for Non-Technical Teams</title>
+  <meta name="description" content="Version control, change review, and team collaboration for your AI agents, prompts, and workflows. Built for marketing and ops teams who run AI infrastructure without needing to learn git." />
+  <meta name="keywords" content="AI workflow management, prompt management, AI agent version control, marketing AI ops, prompt versioning, AI team collaboration, AI infrastructure, non-technical AI tools" />
+  <link rel="canonical" href="https://promptron.ai/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://promptron.ai/" />
+  <meta property="og:title" content="Promptron — AI Workflow Ops for Non-Technical Teams" />
+  <meta property="og:description" content="Version control and change management for your AI agents, prompts, and workflows. Built for the teams who build with AI, not just engineers." />
+  <meta property="og:image" content="https://promptron.ai/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Promptron" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@promptronai" />
+  <meta name="twitter:title" content="Promptron — AI Workflow Ops for Non-Technical Teams" />
+  <meta name="twitter:description" content="Version control and change management for your AI agents, prompts, and workflows. Built for marketing and ops teams." />
+  <meta name="twitter:image" content="https://promptron.ai/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234f6ef7'/><text x='50%25' y='56%25' font-family='Inter,sans-serif' font-size='18' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'>P</text></svg>" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Promptron",
+    "url": "https://promptron.ai",
+    "description": "Version control and change management for AI agents, prompts, and workflows. Built for non-technical marketing and operations teams.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free waitlist signup"
+    },
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Marketing and operations teams managing AI workflows"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Promptron?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Promptron is an AI workflow management platform that gives non-technical teams version control, change review, and collaboration tools for their AI agents, prompts, and workflows." }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is Promptron for?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Promptron is built for marketing ops teams, RevOps teams, AI ops managers, and agencies who run AI workflows and need engineering-grade tooling without requiring their team to learn git or code." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why not just use GitHub?",
+        "acceptedAnswer": { "@type": "Answer", "text": "GitHub is built for engineers. Most marketing and ops teams can't or shouldn't need to learn git commands, pull requests, and CLI tools just to manage their AI workflows. Promptron gives you the same discipline with a UI anyone can use." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Promptron different from Notion or Google Docs?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Notion and Google Docs have no real version history, no change review workflows, and no deployment concepts. Promptron is purpose-built for AI workflow management with full audit trails, rollback, and approval flows." }
+      }
+    ]
+  }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: {
-              50:  '#f0f4ff',
-              100: '#e0eaff',
-              400: '#6b8cff',
-              500: '#4f6ef7',
-              600: '#3b57f0',
-              700: '#2d43d6',
-              900: '#1a2580',
-            }
+            brand: { 400: '#6b8cff', 500: '#4f6ef7', 600: '#3b57f0', 700: '#2d43d6' }
           },
           fontFamily: {
             sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -34,176 +103,102 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
-    /* ── Base ── */
     body { background: #060612; }
 
-    /* ── Animated gradient orbs ── */
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.35;
-      animation: drift linear infinite;
-    }
-    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, #4f6ef7, transparent 70%); top: -200px; left: -100px; animation-duration: 18s; }
-    .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, #7c3aed, transparent 70%); top: 100px; right: -100px; animation-duration: 22s; animation-direction: reverse; }
-    .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, #06b6d4, transparent 70%); bottom: -100px; left: 30%; animation-duration: 26s; }
+    .orb { position:absolute; border-radius:50%; filter:blur(80px); opacity:0.3; animation:drift linear infinite; }
+    .orb-1 { width:600px; height:600px; background:radial-gradient(circle,#4f6ef7,transparent 70%); top:-200px; left:-100px; animation-duration:18s; }
+    .orb-2 { width:500px; height:500px; background:radial-gradient(circle,#7c3aed,transparent 70%); top:100px; right:-100px; animation-duration:22s; animation-direction:reverse; }
+    .orb-3 { width:400px; height:400px; background:radial-gradient(circle,#06b6d4,transparent 70%); bottom:-100px; left:30%; animation-duration:26s; }
 
     @keyframes drift {
-      0%   { transform: translate(0, 0) scale(1); }
-      25%  { transform: translate(40px, -30px) scale(1.05); }
-      50%  { transform: translate(-20px, 50px) scale(0.95); }
-      75%  { transform: translate(-50px, -20px) scale(1.08); }
-      100% { transform: translate(0, 0) scale(1); }
+      0%   { transform:translate(0,0) scale(1); }
+      25%  { transform:translate(40px,-30px) scale(1.05); }
+      50%  { transform:translate(-20px,50px) scale(0.95); }
+      75%  { transform:translate(-50px,-20px) scale(1.08); }
+      100% { transform:translate(0,0) scale(1); }
     }
 
-    /* ── Dot grid overlay ── */
-    .dot-grid {
-      background-image: radial-gradient(circle, rgba(79,110,247,0.18) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
+    .dot-grid { background-image:radial-gradient(circle,rgba(79,110,247,0.18) 1px,transparent 1px); background-size:32px 32px; }
 
-    /* ── Noise texture ── */
-    .noise::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      opacity: 0.4;
-    }
+    .glow-card { position:relative; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); transition:all 0.3s ease; }
+    .glow-card::before { content:''; position:absolute; inset:-1px; border-radius:inherit; padding:1px; background:linear-gradient(135deg,rgba(79,110,247,0),rgba(79,110,247,0.4),rgba(124,58,237,0)); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; opacity:0; transition:opacity 0.3s; }
+    .glow-card:hover::before { opacity:1; }
+    .glow-card:hover { background:rgba(79,110,247,0.08); box-shadow:0 0 30px rgba(79,110,247,0.15); transform:translateY(-2px); }
 
-    /* ── Gradient border cards ── */
-    .glow-card {
-      position: relative;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: all 0.3s ease;
-    }
-    .glow-card::before {
-      content: '';
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(135deg, rgba(79,110,247,0), rgba(79,110,247,0.4), rgba(124,58,237,0));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .glow-card:hover::before { opacity: 1; }
-    .glow-card:hover {
-      background: rgba(79,110,247,0.08);
-      box-shadow: 0 0 30px rgba(79,110,247,0.15);
-      transform: translateY(-2px);
-    }
+    .typewriter-text { border-right:2px solid #4f6ef7; animation:blink 0.8s step-end infinite; }
+    @keyframes blink { 50% { border-color:transparent; } }
 
-    /* ── Typewriter ── */
-    .typewriter-text {
-      border-right: 2px solid #4f6ef7;
-      animation: blink 0.8s step-end infinite;
-    }
-    @keyframes blink { 50% { border-color: transparent; } }
-
-    /* ── Badge pulse ── */
-    .pulse-dot {
-      animation: pulse-ring 2s ease-out infinite;
-    }
+    .pulse-dot { animation:pulse-ring 2s ease-out infinite; }
     @keyframes pulse-ring {
-      0%   { box-shadow: 0 0 0 0 rgba(79,110,247,0.6); }
-      70%  { box-shadow: 0 0 0 8px rgba(79,110,247,0); }
-      100% { box-shadow: 0 0 0 0 rgba(79,110,247,0); }
+      0%   { box-shadow:0 0 0 0 rgba(79,110,247,0.6); }
+      70%  { box-shadow:0 0 0 8px rgba(79,110,247,0); }
+      100% { box-shadow:0 0 0 0 rgba(79,110,247,0); }
     }
 
-    /* ── Scroll fade-in ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-in { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
+    .fade-in.visible { opacity:1; transform:translateY(0); }
 
-    /* ── Terminal block ── */
-    .terminal {
-      background: #0d0d1a;
-      border: 1px solid rgba(79,110,247,0.3);
-      box-shadow: 0 0 40px rgba(79,110,247,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
-    }
-    .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .terminal { background:#0d0d1a; border:1px solid rgba(79,110,247,0.3); box-shadow:0 0 40px rgba(79,110,247,0.1),inset 0 1px 0 rgba(255,255,255,0.05); }
+    .terminal-dot { width:12px; height:12px; border-radius:50%; }
 
-    /* ── Glow text ── */
-    .glow-text {
-      text-shadow: 0 0 40px rgba(79,110,247,0.5);
-    }
+    .glow-text { text-shadow:0 0 40px rgba(79,110,247,0.5); }
 
-    /* ── Step number glow ── */
-    .step-num {
-      background: rgba(79,110,247,0.15);
-      border: 1px solid rgba(79,110,247,0.4);
-      box-shadow: 0 0 20px rgba(79,110,247,0.2);
-    }
+    .step-num { background:rgba(79,110,247,0.15); border:1px solid rgba(79,110,247,0.4); box-shadow:0 0 20px rgba(79,110,247,0.2); }
 
-    /* ── CTA button ── */
-    .cta-btn {
-      background: linear-gradient(135deg, #4f6ef7, #7c3aed);
-      box-shadow: 0 4px 24px rgba(79,110,247,0.4);
-      transition: all 0.2s;
-    }
-    .cta-btn:hover {
-      box-shadow: 0 4px 40px rgba(79,110,247,0.7);
-      transform: translateY(-1px);
-    }
+    .cta-btn { background:linear-gradient(135deg,#4f6ef7,#7c3aed); box-shadow:0 4px 24px rgba(79,110,247,0.4); transition:all 0.2s; }
+    .cta-btn:hover { box-shadow:0 4px 40px rgba(79,110,247,0.7); transform:translateY(-1px); }
 
-    /* ── Nav blur ── */
-    .nav-blur {
-      background: rgba(6, 6, 18, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
+    .nav-blur { background:rgba(6,6,18,0.7); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
 
-    /* ── Input glow ── */
-    .input-glow:focus {
-      box-shadow: 0 0 0 2px rgba(79,110,247,0.5);
-    }
+    .input-glow:focus { box-shadow:0 0 0 2px rgba(79,110,247,0.5); }
 
-    /* ── Gradient text ── */
-    .gradient-text {
-      background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 50%, #818cf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .gradient-text { background:linear-gradient(135deg,#ffffff 0%,#a5b4fc 50%,#818cf8 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+
+    /* Comparison table */
+    .check { color: #4ade80; }
+    .cross { color: #ef4444; opacity: 0.5; }
+    .partial { color: #f59e0b; }
+
+    /* Stats counter */
+    .stat-card { background:rgba(79,110,247,0.08); border:1px solid rgba(79,110,247,0.2); }
+
+    /* FAQ accordion */
+    .faq-item { border-bottom:1px solid rgba(255,255,255,0.08); }
+    .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+    .faq-answer.open { max-height:300px; }
+    .faq-chevron { transition:transform 0.3s; }
+    .faq-chevron.open { transform:rotate(180deg); }
+
+    /* Gradient divider */
+    .gradient-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(79,110,247,0.5),transparent); }
   </style>
 </head>
 <body class="font-sans text-white antialiased overflow-x-hidden">
 
-  <!-- Canvas for particle network -->
-  <canvas id="particles" class="fixed inset-0 pointer-events-none" style="z-index:0; opacity:0.4;"></canvas>
+  <canvas id="particles" class="fixed inset-0 pointer-events-none" style="z-index:0;opacity:0.35;"></canvas>
 
   <!-- Nav -->
-  <nav class="nav-blur fixed top-0 left-0 right-0 z-50 border-b border-white/5 px-6 py-4">
+  <nav class="nav-blur fixed top-0 left-0 right-0 z-50 border-b border-white/5 px-6 py-4" role="navigation" aria-label="Main navigation">
     <div class="max-w-5xl mx-auto flex items-center justify-between">
       <span class="text-xl font-bold tracking-tight">
         Prompt<span class="text-brand-500 glow-text">ron</span><span class="text-brand-400 opacity-60">.ai</span>
       </span>
-      <a href="#waitlist" class="text-sm font-medium text-brand-400 hover:text-white transition-colors flex items-center gap-1.5">
-        Join waitlist <span>&rarr;</span>
-      </a>
+      <div class="flex items-center gap-6">
+        <a href="#how-it-works" class="hidden sm:block text-sm text-gray-400 hover:text-white transition-colors">How it works</a>
+        <a href="#faq" class="hidden sm:block text-sm text-gray-400 hover:text-white transition-colors">FAQ</a>
+        <a href="#waitlist" class="text-sm font-medium bg-brand-500/20 border border-brand-500/40 text-brand-400 hover:text-white hover:bg-brand-500/30 px-4 py-1.5 rounded-full transition-all">
+          Join waitlist &rarr;
+        </a>
+      </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-20 overflow-hidden noise">
-    <!-- Orbs -->
+  <main>
+  <section class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-20 overflow-hidden" aria-label="Hero">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
-    <!-- Dot grid -->
     <div class="dot-grid absolute inset-0 pointer-events-none"></div>
 
     <div class="relative z-10 max-w-4xl mx-auto text-center">
@@ -218,16 +213,14 @@
         <span class="text-brand-400 glow-text">proper infrastructure</span>
       </h1>
 
-      <!-- Typewriter -->
-      <div class="flex items-center justify-center gap-2 text-lg text-gray-400 mb-6 font-mono">
+      <div class="flex items-center justify-center gap-2 text-lg text-gray-400 mb-6 font-mono h-8">
         <span>Managing AI</span>
-        <span id="typewriter" class="text-brand-400 typewriter-text font-semibold min-w-[200px] text-left"></span>
+        <span id="typewriter" class="text-brand-400 typewriter-text font-semibold min-w-[220px] text-left inline-block"></span>
       </div>
 
       <p class="text-lg text-gray-400 leading-relaxed mb-10 max-w-2xl mx-auto">
-        Your team runs AI agents, prompts, and workflows that power real business operations.
-        But you're managing them in Notion, Google Docs, or GitHub repos nobody else can use.
-        Promptron gives you version control, change review, and team collaboration built for people who aren't engineers.
+        Version control, change review, and team collaboration for your AI agents, prompts, and workflows.
+        Built for marketing and ops teams who run AI infrastructure without needing to learn git.
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -238,11 +231,10 @@
           See how it works
         </a>
       </div>
-
       <p class="mt-5 text-sm text-gray-600">No credit card. No spam. Just early access.</p>
 
-      <!-- Terminal preview -->
-      <div class="terminal rounded-xl mt-16 p-5 text-left max-w-2xl mx-auto fade-in">
+      <!-- Terminal -->
+      <div class="terminal rounded-xl mt-16 p-5 text-left max-w-2xl mx-auto fade-in" role="img" aria-label="Example of Promptron version history for an AI agent">
         <div class="flex items-center gap-2 mb-4">
           <div class="terminal-dot bg-red-500/80"></div>
           <div class="terminal-dot bg-yellow-500/80"></div>
@@ -250,7 +242,7 @@
           <span class="ml-3 text-xs text-gray-600 font-mono">promptron / customer-support-agent</span>
         </div>
         <div class="font-mono text-sm space-y-1.5">
-          <div><span class="text-green-400">✓</span> <span class="text-gray-500">v3.2</span> <span class="text-gray-300">Tone rules updated</span> <span class="text-gray-600">— Sarah Chen · 2 hours ago</span></div>
+          <div><span class="text-green-400">✓</span> <span class="text-gray-500">v3.2</span> <span class="text-gray-300">Tone rules updated</span> <span class="text-gray-600">— Sarah · 2h ago</span></div>
           <div><span class="text-yellow-400">⏳</span> <span class="text-gray-500">v3.3</span> <span class="text-gray-300">Added refund escalation logic</span> <span class="text-yellow-500">— awaiting review</span></div>
           <div class="border-t border-white/5 pt-2 mt-2">
             <span class="text-brand-400">diff</span> <span class="text-gray-400">v3.2 → v3.3</span>
@@ -263,15 +255,38 @@
     </div>
   </section>
 
+  <!-- Stats bar -->
+  <section class="relative px-6 py-12 border-t border-white/5" aria-label="Key statistics">
+    <div class="gradient-divider absolute top-0 left-0 right-0"></div>
+    <div class="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div class="stat-card rounded-xl p-5 text-center fade-in">
+        <div class="text-3xl font-bold text-white mb-1"><span class="counter" data-target="500">0</span>+</div>
+        <div class="text-xs text-gray-500 uppercase tracking-wider">Teams on waitlist</div>
+      </div>
+      <div class="stat-card rounded-xl p-5 text-center fade-in" style="transition-delay:0.1s">
+        <div class="text-3xl font-bold text-white mb-1"><span class="counter" data-target="12">0</span>+</div>
+        <div class="text-xs text-gray-500 uppercase tracking-wider">AI agents per team</div>
+      </div>
+      <div class="stat-card rounded-xl p-5 text-center fade-in" style="transition-delay:0.2s">
+        <div class="text-3xl font-bold text-white mb-1"><span class="counter" data-target="0">0</span></div>
+        <div class="text-xs text-gray-500 uppercase tracking-wider">Git commands needed</div>
+      </div>
+      <div class="stat-card rounded-xl p-5 text-center fade-in" style="transition-delay:0.3s">
+        <div class="text-3xl font-bold text-white mb-1"><span class="counter" data-target="100">0</span>%</div>
+        <div class="text-xs text-gray-500 uppercase tracking-wider">Audit trail coverage</div>
+      </div>
+    </div>
+  </section>
+
   <!-- Problem -->
-  <section class="relative px-6 py-24 border-t border-white/5">
+  <section class="relative px-6 py-24 border-t border-white/5" aria-labelledby="problem-heading">
     <div class="dot-grid absolute inset-0 opacity-30 pointer-events-none"></div>
     <div class="relative max-w-4xl mx-auto">
       <p class="text-center text-xs font-bold uppercase tracking-widest text-brand-400 mb-4 fade-in">The problem</p>
-      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-16 fade-in">
-        AI ops teams are building serious infrastructure<br class="hidden sm:block" />
-        <span class="text-gray-400">with no tools to match</span>
+      <h2 id="problem-heading" class="text-3xl sm:text-4xl font-bold text-center mb-4 fade-in">
+        AI ops teams are building serious infrastructure
       </h2>
+      <p class="text-center text-gray-400 mb-16 fade-in max-w-2xl mx-auto">with no tools designed for how they actually work</p>
 
       <div class="grid sm:grid-cols-3 gap-6">
         <div class="glow-card rounded-xl p-6 fade-in">
@@ -279,12 +294,12 @@
           <h3 class="font-semibold text-lg mb-2">Prompts live everywhere</h3>
           <p class="text-gray-400 text-sm leading-relaxed">Notion, Google Docs, Slack messages, someone's local folder. Nobody knows which version is current or what changed last week.</p>
         </div>
-        <div class="glow-card rounded-xl p-6 fade-in" style="transition-delay: 0.1s">
+        <div class="glow-card rounded-xl p-6 fade-in" style="transition-delay:0.1s">
           <div class="text-3xl mb-4">💥</div>
           <h3 class="font-semibold text-lg mb-2">Changes break things silently</h3>
           <p class="text-gray-400 text-sm leading-relaxed">Someone edits an agent prompt. Output quality drops. Nobody knows when it changed, who changed it, or what it said before.</p>
         </div>
-        <div class="glow-card rounded-xl p-6 fade-in" style="transition-delay: 0.2s">
+        <div class="glow-card rounded-xl p-6 fade-in" style="transition-delay:0.2s">
           <div class="text-3xl mb-4">🔒</div>
           <h3 class="font-semibold text-lg mb-2">GitHub isn't the answer</h3>
           <p class="text-gray-400 text-sm leading-relaxed">Software teams solved this decades ago. But your marketing or ops team shouldn't have to learn git commands to manage AI workflows.</p>
@@ -294,43 +309,120 @@
   </section>
 
   <!-- How it works -->
-  <section id="how-it-works" class="px-6 py-24 border-t border-white/5 relative overflow-hidden">
+  <section id="how-it-works" class="px-6 py-24 border-t border-white/5 relative overflow-hidden" aria-labelledby="how-heading">
     <div class="absolute inset-0 bg-gradient-to-b from-brand-500/5 to-transparent pointer-events-none"></div>
     <div class="relative max-w-4xl mx-auto">
       <p class="text-center text-xs font-bold uppercase tracking-widest text-brand-400 mb-4 fade-in">How Promptron works</p>
-      <h2 class="text-3xl sm:text-4xl font-bold text-center mb-16 fade-in">
-        Engineering-grade ops.<br />
-        <span class="text-gray-400">Human-friendly interface.</span>
+      <h2 id="how-heading" class="text-3xl sm:text-4xl font-bold text-center mb-4 fade-in">
+        Engineering-grade ops.
       </h2>
+      <p class="text-center text-gray-400 mb-16 fade-in">Human-friendly interface.</p>
 
       <div class="space-y-10">
         <div class="flex flex-col sm:flex-row gap-6 items-start fade-in">
           <div class="flex-shrink-0 step-num w-12 h-12 rounded-xl flex items-center justify-center text-brand-400 font-bold text-lg">1</div>
           <div class="pt-1">
             <h3 class="text-xl font-semibold mb-2">One home for everything AI</h3>
-            <p class="text-gray-400 leading-relaxed">Store every agent, prompt, persona, rule set, and workflow in one organized library. Searchable, tagged, always current.</p>
+            <p class="text-gray-400 leading-relaxed">Store every agent, prompt, persona, rule set, and workflow in one organized library. Searchable, tagged, always current. No more hunting through Notion pages or Slack threads.</p>
           </div>
         </div>
         <div class="flex flex-col sm:flex-row gap-6 items-start fade-in">
           <div class="flex-shrink-0 step-num w-12 h-12 rounded-xl flex items-center justify-center text-brand-400 font-bold text-lg">2</div>
           <div class="pt-1">
-            <h3 class="text-xl font-semibold mb-2">Every change is tracked</h3>
-            <p class="text-gray-400 leading-relaxed">Full version history on every agent and prompt. See exactly what changed, when, and who changed it. Roll back to any prior version in one click.</p>
+            <h3 class="text-xl font-semibold mb-2">Every change is tracked automatically</h3>
+            <p class="text-gray-400 leading-relaxed">Full version history on every agent and prompt. See exactly what changed, when, and who changed it. Roll back to any prior version in one click. Full audit trail, always.</p>
           </div>
         </div>
         <div class="flex flex-col sm:flex-row gap-6 items-start fade-in">
           <div class="flex-shrink-0 step-num w-12 h-12 rounded-xl flex items-center justify-center text-brand-400 font-bold text-lg">3</div>
           <div class="pt-1">
             <h3 class="text-xl font-semibold mb-2">Review before it goes live</h3>
-            <p class="text-gray-400 leading-relaxed">Propose a change. Team lead approves or requests revisions. No more unreviewed edits quietly breaking production workflows.</p>
+            <p class="text-gray-400 leading-relaxed">Propose a change. Team lead approves or requests revisions. No more unreviewed edits quietly breaking production workflows at 2am.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Comparison table -->
+  <section class="px-6 py-24 border-t border-white/5 relative" aria-labelledby="compare-heading">
+    <div class="dot-grid absolute inset-0 opacity-20 pointer-events-none"></div>
+    <div class="relative max-w-4xl mx-auto">
+      <p class="text-center text-xs font-bold uppercase tracking-widest text-brand-400 mb-4 fade-in">How we compare</p>
+      <h2 id="compare-heading" class="text-3xl sm:text-4xl font-bold text-center mb-4 fade-in">Promptron vs the alternatives</h2>
+      <p class="text-center text-gray-400 mb-12 fade-in">Why teams outgrow Notion, Google Docs, and GitHub for AI ops</p>
+
+      <div class="fade-in overflow-x-auto">
+        <table class="w-full border-collapse" role="table" aria-label="Feature comparison between Promptron, Notion, Google Docs, and GitHub">
+          <thead>
+            <tr>
+              <th class="text-left py-4 px-4 text-sm font-semibold text-gray-400 border-b border-white/10 w-1/2">Feature</th>
+              <th class="py-4 px-4 text-sm font-bold text-white border-b border-white/10 text-center bg-brand-500/10 rounded-t-lg">Promptron</th>
+              <th class="py-4 px-4 text-sm font-semibold text-gray-500 border-b border-white/10 text-center">Notion</th>
+              <th class="py-4 px-4 text-sm font-semibold text-gray-500 border-b border-white/10 text-center">Google Docs</th>
+              <th class="py-4 px-4 text-sm font-semibold text-gray-500 border-b border-white/10 text-center">GitHub</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-white/5 hover:bg-white/2 transition-colors">
+              <td class="py-3.5 px-4 text-sm text-gray-300">Version control for AI prompts</td>
+              <td class="py-3.5 px-4 text-center bg-brand-500/5"><span class="check text-lg">✓</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="partial text-lg">~</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="partial text-lg">~</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="check text-lg">✓</span></td>
+            </tr>
+            <tr class="border-b border-white/5 hover:bg-white/2 transition-colors">
+              <td class="py-3.5 px-4 text-sm text-gray-300">Non-technical team UI</td>
+              <td class="py-3.5 px-4 text-center bg-brand-500/5"><span class="check text-lg">✓</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="check text-lg">✓</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="check text-lg">✓</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+            </tr>
+            <tr class="border-b border-white/5 hover:bg-white/2 transition-colors">
+              <td class="py-3.5 px-4 text-sm text-gray-300">Change approval workflow</td>
+              <td class="py-3.5 px-4 text-center bg-brand-500/5"><span class="check text-lg">✓</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="check text-lg">✓</span></td>
+            </tr>
+            <tr class="border-b border-white/5 hover:bg-white/2 transition-colors">
+              <td class="py-3.5 px-4 text-sm text-gray-300">AI agent &amp; persona management</td>
+              <td class="py-3.5 px-4 text-center bg-brand-500/5"><span class="check text-lg">✓</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+            </tr>
+            <tr class="border-b border-white/5 hover:bg-white/2 transition-colors">
+              <td class="py-3.5 px-4 text-sm text-gray-300">One-click rollback</td>
+              <td class="py-3.5 px-4 text-center bg-brand-500/5"><span class="check text-lg">✓</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="partial text-lg">~</span></td>
+            </tr>
+            <tr class="border-b border-white/5 hover:bg-white/2 transition-colors">
+              <td class="py-3.5 px-4 text-sm text-gray-300">Full audit trail</td>
+              <td class="py-3.5 px-4 text-center bg-brand-500/5"><span class="check text-lg">✓</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="check text-lg">✓</span></td>
+            </tr>
+            <tr class="hover:bg-white/2 transition-colors">
+              <td class="py-3.5 px-4 text-sm text-gray-300">Built for AI workflows (not general docs)</td>
+              <td class="py-3.5 px-4 text-center bg-brand-500/5 rounded-b-lg"><span class="check text-lg">✓</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+              <td class="py-3.5 px-4 text-center"><span class="cross text-lg">✗</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-gray-600 mt-3 text-center">~ = partial support &nbsp;|&nbsp; ✓ = full support &nbsp;|&nbsp; ✗ = not supported</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Quote -->
-  <section class="px-6 py-20 border-t border-white/5 relative">
+  <section class="px-6 py-20 border-t border-white/5 relative" aria-label="Customer quote">
+    <div class="gradient-divider absolute top-0 left-0 right-0"></div>
     <div class="absolute inset-0 bg-gradient-to-r from-brand-500/5 via-purple-500/5 to-brand-500/5 pointer-events-none"></div>
     <div class="relative max-w-3xl mx-auto text-center fade-in">
       <div class="text-5xl text-brand-500/30 font-serif leading-none mb-4">"</div>
@@ -343,35 +435,35 @@
   </section>
 
   <!-- Who it's for -->
-  <section class="px-6 py-24 border-t border-white/5 relative">
+  <section class="px-6 py-24 border-t border-white/5 relative" aria-labelledby="audience-heading">
     <div class="dot-grid absolute inset-0 opacity-20 pointer-events-none"></div>
     <div class="relative max-w-4xl mx-auto">
       <p class="text-center text-xs font-bold uppercase tracking-widest text-brand-400 mb-4 fade-in">Who it's for</p>
-      <h2 class="text-3xl font-bold text-center mb-12 fade-in">Built for the teams actually running AI</h2>
+      <h2 id="audience-heading" class="text-3xl font-bold text-center mb-12 fade-in">Built for the teams actually running AI</h2>
       <div class="grid sm:grid-cols-2 gap-5">
         <div class="glow-card flex gap-4 items-start rounded-xl p-6 fade-in">
-          <span class="text-2xl">📣</span>
+          <span class="text-2xl" aria-hidden="true">📣</span>
           <div>
             <h3 class="font-semibold mb-1">Marketing Ops Teams</h3>
             <p class="text-sm text-gray-400">Running AI content workflows, email sequences, and brand agents across multiple campaigns and teammates.</p>
           </div>
         </div>
         <div class="glow-card flex gap-4 items-start rounded-xl p-6 fade-in" style="transition-delay:0.1s">
-          <span class="text-2xl">📈</span>
+          <span class="text-2xl" aria-hidden="true">📈</span>
           <div>
             <h3 class="font-semibold mb-1">RevOps and Sales Teams</h3>
             <p class="text-sm text-gray-400">Managing AI agents for outreach, research, and customer communication with consistent tone and accuracy.</p>
           </div>
         </div>
         <div class="glow-card flex gap-4 items-start rounded-xl p-6 fade-in" style="transition-delay:0.15s">
-          <span class="text-2xl">🏢</span>
+          <span class="text-2xl" aria-hidden="true">🏢</span>
           <div>
             <h3 class="font-semibold mb-1">AI Ops Managers</h3>
             <p class="text-sm text-gray-400">Overseeing a fleet of AI employees across departments who need accountability, auditability, and control.</p>
           </div>
         </div>
         <div class="glow-card flex gap-4 items-start rounded-xl p-6 fade-in" style="transition-delay:0.2s">
-          <span class="text-2xl">🏭</span>
+          <span class="text-2xl" aria-hidden="true">🏭</span>
           <div>
             <h3 class="font-semibold mb-1">Agencies Running AI for Clients</h3>
             <p class="text-sm text-gray-400">Building and managing AI workflows for multiple clients who need isolated, versioned, professional-grade infrastructure.</p>
@@ -381,45 +473,116 @@
     </div>
   </section>
 
-  <!-- Waitlist -->
-  <section id="waitlist" class="px-6 py-28 border-t border-white/5 relative overflow-hidden">
-    <div class="orb orb-1" style="opacity:0.2; width:800px; height:800px; top:-200px; left:50%; transform:translateX(-50%);"></div>
-    <div class="relative max-w-xl mx-auto text-center fade-in">
-      <h2 class="text-4xl sm:text-5xl font-bold mb-4 gradient-text">Get early access</h2>
-      <p class="text-gray-400 mb-10 text-lg leading-relaxed">We're building Promptron in public. Join the waitlist to shape the product and get first access when we launch.</p>
+  <!-- FAQ -->
+  <section id="faq" class="px-6 py-24 border-t border-white/5 relative overflow-hidden" aria-labelledby="faq-heading">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-500/3 to-transparent pointer-events-none"></div>
+    <div class="relative max-w-3xl mx-auto">
+      <p class="text-center text-xs font-bold uppercase tracking-widest text-brand-400 mb-4 fade-in">FAQ</p>
+      <h2 id="faq-heading" class="text-3xl font-bold text-center mb-12 fade-in">Frequently asked questions</h2>
 
-      <form
-        action="https://formspree.io/f/xvzwzlbn"
-        method="POST"
-        class="flex flex-col sm:flex-row gap-3"
-        id="waitlist-form"
-      >
+      <div class="space-y-0 fade-in" role="list">
+
+        <div class="faq-item py-5 cursor-pointer" role="listitem">
+          <button class="faq-btn w-full flex items-center justify-between text-left gap-4" aria-expanded="false">
+            <span class="font-semibold text-white">What exactly is Promptron?</span>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p class="pt-3 text-gray-400 leading-relaxed">Promptron is an AI workflow management platform that gives non-technical teams version control, change review workflows, and collaboration tools for their AI agents, prompts, and workflows. Think of it as GitHub for your AI infrastructure, without needing to know what a pull request is.</p>
+          </div>
+        </div>
+
+        <div class="faq-item py-5 cursor-pointer" role="listitem">
+          <button class="faq-btn w-full flex items-center justify-between text-left gap-4" aria-expanded="false">
+            <span class="font-semibold text-white">Why not just use GitHub?</span>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p class="pt-3 text-gray-400 leading-relaxed">GitHub is built for engineers. Most marketing and ops teams can't (and shouldn't have to) learn git commands, branches, and CLI tools just to manage AI workflows. Promptron gives you the same discipline and rigor with a UI that anyone on your team can use on day one.</p>
+          </div>
+        </div>
+
+        <div class="faq-item py-5 cursor-pointer" role="listitem">
+          <button class="faq-btn w-full flex items-center justify-between text-left gap-4" aria-expanded="false">
+            <span class="font-semibold text-white">How is this different from Notion or Google Docs?</span>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p class="pt-3 text-gray-400 leading-relaxed">Notion and Google Docs were built for documents and notes. They have basic page history but no real version control, no change approval flows, no deployment concepts, and no audit trails. When your AI workflows become real infrastructure, those tools collapse. Promptron is purpose-built for this problem.</p>
+          </div>
+        </div>
+
+        <div class="faq-item py-5 cursor-pointer" role="listitem">
+          <button class="faq-btn w-full flex items-center justify-between text-left gap-4" aria-expanded="false">
+            <span class="font-semibold text-white">Do I need to be technical to use it?</span>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p class="pt-3 text-gray-400 leading-relaxed">Not at all. Promptron is built specifically for non-technical teams. No command line, no git, no code. If you can use Notion, you can use Promptron. The engineering discipline happens under the hood.</p>
+          </div>
+        </div>
+
+        <div class="faq-item py-5 cursor-pointer" role="listitem">
+          <button class="faq-btn w-full flex items-center justify-between text-left gap-4" aria-expanded="false">
+            <span class="font-semibold text-white">When does Promptron launch?</span>
+            <svg class="faq-chevron flex-shrink-0 w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p class="pt-3 text-gray-400 leading-relaxed">We're building in public and accepting early access signups now. Waitlist members will get first access and the opportunity to shape the product before public launch. Join the waitlist below to get notified.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist -->
+  <section id="waitlist" class="px-6 py-28 border-t border-white/5 relative overflow-hidden" aria-labelledby="waitlist-heading">
+    <div class="orb orb-1" style="opacity:0.15;width:800px;height:800px;top:-200px;left:50%;transform:translateX(-50%);"></div>
+    <div class="gradient-divider absolute top-0 left-0 right-0"></div>
+    <div class="relative max-w-xl mx-auto text-center fade-in">
+      <h2 id="waitlist-heading" class="text-4xl sm:text-5xl font-bold mb-4 gradient-text">Get early access</h2>
+      <p class="text-gray-400 mb-10 text-lg leading-relaxed">
+        We're building Promptron in public and working directly with early users to shape the product.
+        Join the waitlist for first access when we launch.
+      </p>
+
+      <form action="https://formspree.io/f/xvzwzlbn" method="POST" class="flex flex-col sm:flex-row gap-3" id="waitlist-form" aria-label="Waitlist signup form">
+        <label for="email-input" class="sr-only">Email address</label>
         <input
+          id="email-input"
           type="email"
           name="email"
           required
           placeholder="you@yourcompany.com"
           class="input-glow flex-1 bg-white/5 border border-white/15 rounded-lg px-4 py-3.5 text-white placeholder-gray-600 focus:outline-none focus:border-brand-500 transition"
         />
-        <button
-          type="submit"
-          class="cta-btn text-white font-semibold px-6 py-3.5 rounded-lg whitespace-nowrap"
-        >
+        <button type="submit" class="cta-btn text-white font-semibold px-6 py-3.5 rounded-lg whitespace-nowrap">
           Join waitlist
         </button>
       </form>
 
-      <div id="success-message" class="hidden mt-8 p-4 rounded-xl border border-green-500/30 bg-green-500/10 text-green-400 font-medium">
+      <div id="success-message" class="hidden mt-8 p-4 rounded-xl border border-green-500/30 bg-green-500/10 text-green-400 font-medium" role="alert">
         You're on the list. We'll be in touch soon.
       </div>
 
       <p class="mt-5 text-xs text-gray-700">No spam. No credit card. Unsubscribe anytime.</p>
     </div>
   </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="border-t border-white/5 px-6 py-8 text-center text-sm text-gray-700">
-    <p>Promptron &copy; 2026 &mdash; Built by a developer who got tired of managing AI workflows in Notion.</p>
+  <footer class="border-t border-white/5 px-6 py-10" role="contentinfo">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span class="text-lg font-bold">Prompt<span class="text-brand-500">ron</span><span class="text-gray-600">.ai</span></span>
+      <p class="text-sm text-gray-700 text-center">Built by a developer who got tired of managing AI workflows in Notion.</p>
+      <div class="flex gap-6 text-sm text-gray-600">
+        <a href="#how-it-works" class="hover:text-gray-400 transition-colors">How it works</a>
+        <a href="#faq" class="hover:text-gray-400 transition-colors">FAQ</a>
+        <a href="#waitlist" class="hover:text-gray-400 transition-colors">Waitlist</a>
+      </div>
+    </div>
+    <p class="text-center text-xs text-gray-800 mt-6">&copy; 2026 Promptron. All rights reserved.</p>
   </footer>
 
   <script>
@@ -427,53 +590,27 @@
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let particles = [];
-    const PARTICLE_COUNT = 80;
-    const MAX_DIST = 140;
+    const PARTICLE_COUNT = 80, MAX_DIST = 140;
 
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     resize();
     window.addEventListener('resize', resize);
 
-    function createParticle() {
-      return {
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        r: Math.random() * 1.5 + 0.5,
-      };
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({ x:Math.random()*canvas.width, y:Math.random()*canvas.height, vx:(Math.random()-0.5)*0.4, vy:(Math.random()-0.5)*0.4, r:Math.random()*1.5+0.5 });
     }
 
-    for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(createParticle());
-
     function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(99,130,255,0.6)';
-        ctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const dx = p.x - q.x, dy = p.y - q.y;
-          const dist = Math.sqrt(dx*dx + dy*dy);
-          if (dist < MAX_DIST) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(79,110,247,${0.15 * (1 - dist / MAX_DIST)})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      for (let i=0;i<particles.length;i++) {
+        const p=particles[i];
+        p.x+=p.vx; p.y+=p.vy;
+        if(p.x<0||p.x>canvas.width) p.vx*=-1;
+        if(p.y<0||p.y>canvas.height) p.vy*=-1;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fillStyle='rgba(99,130,255,0.6)'; ctx.fill();
+        for(let j=i+1;j<particles.length;j++){
+          const q=particles[j], dx=p.x-q.x, dy=p.y-q.y, dist=Math.sqrt(dx*dx+dy*dy);
+          if(dist<MAX_DIST){ ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.strokeStyle=`rgba(79,110,247,${0.15*(1-dist/MAX_DIST)})`; ctx.lineWidth=0.6; ctx.stroke(); }
         }
       }
       requestAnimationFrame(animateParticles);
@@ -481,44 +618,76 @@
     animateParticles();
 
     // ── Typewriter ──
-    const phrases = [
-      'agents in Notion? 😬',
-      'prompts in Google Docs? 😬',
-      'rules in Slack threads? 😬',
-      'workflows without version control?',
-    ];
+    const phrases = ['agents in Notion? 😬','prompts in Google Docs? 😬','rules in Slack threads? 😬','workflows without version control?'];
     const el = document.getElementById('typewriter');
-    let pi = 0, ci = 0, deleting = false, wait = 0;
-
-    function type() {
-      if (wait > 0) { wait--; setTimeout(type, 50); return; }
-      const phrase = phrases[pi];
-      if (!deleting) {
-        el.textContent = phrase.slice(0, ++ci);
-        if (ci === phrase.length) { deleting = true; wait = 40; }
-        setTimeout(type, 60);
+    let pi=0,ci=0,deleting=false,wait=0;
+    function type(){
+      if(wait>0){wait--;setTimeout(type,50);return;}
+      const phrase=phrases[pi];
+      if(!deleting){
+        el.textContent=phrase.slice(0,++ci);
+        if(ci===phrase.length){deleting=true;wait=40;}
+        setTimeout(type,60);
       } else {
-        el.textContent = phrase.slice(0, --ci);
-        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; wait = 10; }
-        setTimeout(type, 30);
+        el.textContent=phrase.slice(0,--ci);
+        if(ci===0){deleting=false;pi=(pi+1)%phrases.length;wait=10;}
+        setTimeout(type,30);
       }
     }
     type();
 
-    // ── Scroll fade-in ──
+    // ── Animated counters ──
+    function animateCounter(el, target, suffix) {
+      let start = 0;
+      const duration = 1500;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target;
+      };
+      requestAnimationFrame(step);
+    }
+
+    // ── Scroll fade-in + trigger counters ──
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          e.target.querySelectorAll('.counter').forEach(c => {
+            animateCounter(c, parseInt(c.dataset.target));
+          });
+        }
+      });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling;
+        const chevron = btn.querySelector('.faq-chevron');
+        const isOpen = answer.classList.contains('open');
+        document.querySelectorAll('.faq-answer.open').forEach(a => a.classList.remove('open'));
+        document.querySelectorAll('.faq-chevron.open').forEach(c => c.classList.remove('open'));
+        document.querySelectorAll('.faq-btn').forEach(b => b.setAttribute('aria-expanded','false'));
+        if (!isOpen) {
+          answer.classList.add('open');
+          chevron.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+        }
+      });
+    });
 
     // ── Waitlist form ──
     const form = document.getElementById('waitlist-form');
     const success = document.getElementById('success-message');
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const data = new FormData(form);
-      const response = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-      if (response.ok) { form.classList.add('hidden'); success.classList.remove('hidden'); }
+      const response = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
+      if(response.ok){ form.classList.add('hidden'); success.classList.remove('hidden'); }
     });
   </script>
 </body>
